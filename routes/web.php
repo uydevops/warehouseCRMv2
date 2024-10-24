@@ -38,7 +38,13 @@ Route::group(['middleware' => AuthMiddleware::class], function () {
     Route::post('/reservations/add', [ReservationsController::class, 'add'])->name('reserve-table');
     Route::post('/reservations/release', [ReservationsController::class, 'release'])->name('release-table');
 
-    //RELASE table
+    //feedback
+
+    Route::get('/feedback', [DashboardController::class, 'feedback'])->name('feedbacks');
+
+
+    Route::get('/employees', [DashboardController::class, 'employees'])->name('employees');
+    
 
 
 

@@ -94,15 +94,34 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                <i class="mdi mdi-table"></i>
-                                <span>Rezervasyon Sistemi</span>
+                            <a href="{{route('tables')}}" class="waves-effect">
+                                <i class="mdi mdi-table"></i> <!-- Masa Listesi ikonu -->
+                                <span>Masa Listesi</span>
                             </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{route('tables')}}">Masa Listesi</a></li>
-                                <li><a href="{{route('reservations')}}">Rezervasyon Listesi</a></li>
-                            </ul>
                         </li>
+                        <li>
+                            <a href="{{route('reservations')}}" class="waves-effect">
+                                <i class="mdi mdi-book-multiple"></i> <!-- Rezervasyon Listesi ikonu -->
+                                <span>Rezervasyon Listesi</span>
+                            </a>
+                        </li>
+
+                        <!---Geri Bildirimler--->
+                        <li>
+                            <a href="{{route('feedbacks')}}" class="waves-effect">
+                                <i class="mdi mdi-comment"></i> <!-- Geri Bildirim ikonu -->
+                                <span>Geri Bildirimler</span>
+                            </a>
+                        </li>
+
+                        <!---personel listesi--->
+                        <li>
+                            <a href="{{route('employees')}}" class="waves-effect">
+                                <i class="mdi mdi-account-multiple"></i> <!-- Personel Listesi ikonu -->
+                                <span>Personel Listesi</span>
+                            </a>
+                        </li>
+                        
                         
 
                     

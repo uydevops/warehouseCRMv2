@@ -30,4 +30,17 @@ class DashboardController extends Controller
         $this->data['reservations'] = DB::table('reservations')->get();
         return view('reservations', $this->data);
     }
+
+    public function feedback()
+    {
+        $this->data['feedback'] = DB::table('feedback')->get();
+        return view('feedback', $this->data);
+    }
+
+    public function employees()
+    {
+        $this->data['employees'] = DB::table('employees')->get();
+        return view('employees', $this->data);
+        
+    }
 }

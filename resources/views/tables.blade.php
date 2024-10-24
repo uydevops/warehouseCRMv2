@@ -1,11 +1,12 @@
 @include('layouts.header')
 @include('layouts.module.tables_add_modal')
+
 <!-- Toastr CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
 
 <!-- Toastr JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 <div class="main-content">
     <div class="page-content">
@@ -29,24 +30,22 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Masalar</h5>
-                            <p class="card-title-desc">
-                                Masalarınızı buradan yönetebilirsiniz.
-                            </p>
+                            <p class="card-title-desc">Masalarınızı buradan yönetebilirsiniz.</p>
 
                             <div class="row mb-4 justify-content-end">
                                 <div class="col-sm-4 text-end">
                                     <button class="btn btn-danger mb-2" data-bs-toggle="modal"
-                                        data-bs-target="#addTableModal"><i class="fas fa-plus"></i> Yeni Masa
-                                        Ekle</button>
+                                        data-bs-target="#addTableModal"><i class="fas fa-plus"></i> Yeni Masa Ekle</button>
                                 </div>
                             </div>
 
                             <div class="table-responsive">
-                                <table id="datatable-buttons" class="table table-striped table-bordered w-100">
+                                <table id="datatable-buttons" class="table table-striped w-100">
                                     <thead>
                                         <tr>
                                             <th>Masa Adı</th>
                                             <th>Masa Kapasitesi</th>
+                                            <th>Durumu</th>
                                             <th>İşlemler</th>
                                         </tr>
                                     </thead>
@@ -58,6 +57,13 @@
                                             </td>
                                             <td>
                                                 <input type="number" class="form-control" value="{{ $table->capacity }}" onchange="updateTable({{ $table->id }}, 'capacity', this.value)">
+                                            </td>
+
+                                            <td>
+                                                <select class="form-select" onchange="updateTable({{ $table->id }}, 'status', this.value)">
+                                                    <option value="1" {{ $table->status == 1 ? 'selected' : '' }}><p class="text-success"><i class="fas fa-check"></i> Aktif</p></option>
+                                                    <option value="0" {{ $table->status == 0 ? 'selected' : '' }}> <p class="text-danger"><i class="fas fa-times"></i> Pasif</p></option>
+                                                </select>
                                             </td>
                                             <td>
                                                 <a href="{{ route('tables.delete', $table->id) }}" class="btn btn-danger" onclick="return confirm('Bu masayı silmek istediğinize emin misiniz?');">

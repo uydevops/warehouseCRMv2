@@ -112,14 +112,25 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Bordro ve Personel Ödemeleri
         Schema::create('employees', function (Blueprint $table) {
             $table->id()->comment('Çalışan ID');
             $table->string('name')->comment('Çalışan Adı');
-            $table->string('email')->unique()->comment('Çalışan E-posta');
             $table->decimal('salary', 10, 2)->comment('Maaş');
+            $table->integer('leave_days')->default(0)->comment('Kullanılan İzin Günleri'); // Kullanılan izin günleri
+            $table->integer('annual_leave_days')->default(0)->comment('Yıllık İzin Günleri'); // Yıllık izin günleri
             $table->timestamps();
         });
+
+        Schema::create('leave_requests', function (Blueprint $table) {
+            $table->id()->comment('İzin Talebi ID');
+            $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade')->comment('Çalışan ID');
+            $table->date('start_date')->comment('İzin Başlangıç Tarihi');
+            $table->date('end_date')->comment('İzin Bitiş Tarihi');
+            $table->integer('days')->comment('Kullanılan İzin Günleri');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending')->comment('İzin Talebi Durumu');
+            $table->timestamps();
+        });
+
 
         Schema::create('payroll', function (Blueprint $table) {
             $table->id()->comment('Bordro ID');
