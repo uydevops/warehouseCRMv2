@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UsersController;
 use App\Http\Middleware\AuthMiddleware;
 
 Route::middleware('guest')->group(function () {
@@ -12,5 +13,14 @@ Route::middleware('guest')->group(function () {
 
 Route::group(['middleware' => AuthMiddleware::class], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
+    Route::post('/settings', [DashboardController::class, 'updateSettings'])->name('settings.update');
+
+    Route::get('/users', [DashboardController::class, 'users'])->name('users');
+    Route::post('/users/update', [UsersController::class, 'updateUser'])->name('users.update');
+    Route::get('/users/delete/{id}', [UsersController::class, 'deleteUser'])->name('users.delete');
+    Route::post('/users/add', [UsersController::class, 'addUser'])->name('users.add');
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
