@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
-    
+
 
     public function addUser(Request $request)
-{
-    $userData = $request->except('_token'); // Sadece _token hariç tut
-    $userData['password'] = Hash::make($request->password); // Şifreyi hashle
-    DB::table('users')->insert($userData);
+    {
+        $userData = $request->except('_token'); // Sadece _token hariç tut
+        $userData['password'] = Hash::make($request->password); // Şifreyi hashle
+        DB::table('users')->insert($userData);
 
-    return redirect()->back()->with('success', 'Kullanıcı başarıyla eklendi.');
-}
+        return redirect()->back()->with('success', 'Kullanıcı başarıyla eklendi.');
+    }
 
     public function updateUser(Request $request)
     {
@@ -34,7 +34,4 @@ class UsersController extends Controller
         DB::table('users')->where('id', $id)->delete();
         return redirect()->back()->with('success', 'Kullanıcı başarıyla silindi.');
     }
-
-
-
 }
