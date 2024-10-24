@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TablesController;
+use App\Http\Controllers\ReservationsController;
 use App\Http\Middleware\AuthMiddleware;
 
 Route::middleware('guest')->group(function () {
@@ -28,6 +29,18 @@ Route::group(['middleware' => AuthMiddleware::class], function () {
     Route::post('/masalar/add', [TablesController::class, 'add'])->name('tables.add');
     Route::get('/masalar/delete/{id}', [TablesController::class, 'delete'])->name('tables.delete');
     Route::post('/tables/{id}', [TablesController::class, 'update'])->name('tables.update');
+
+
+    Route::get('/rezervasyonlar', [DashboardController::class, 'reservations'])->name('reservations');
+
+    Route::get('/empty-table', [ReservationsController::class, 'emptyTable'])->name('empty-table');
+    Route::get('/reserved-table', [ReservationsController::class, 'reservedTable'])->name('reserved-table');
+    Route::post('/reservations/add', [ReservationsController::class, 'add'])->name('reserve-table');
+    Route::post('/reservations/release', [ReservationsController::class, 'release'])->name('release-table');
+
+    //RELASE table
+
+
 
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

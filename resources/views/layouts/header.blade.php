@@ -100,7 +100,7 @@
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
                                 <li><a href="{{route('tables')}}">Masa Listesi</a></li>
-                                <li><a href="#">Rezervasyon Listesi</a></li>
+                                <li><a href="{{route('reservations')}}">Rezervasyon Listesi</a></li>
                             </ul>
                         </li>
                         

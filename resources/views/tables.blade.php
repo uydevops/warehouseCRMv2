@@ -95,9 +95,8 @@
         generalError: 'Bir hata oluştu.'
     };
 
-    // Rota ayarları
     const routes = {
-        updateTable: "{{ route('tables.update', ':id') }}", // Dinamik ID için yer tutucu
+        updateTable: "{{ route('tables.update', ':id') }}", 
     };
 
     function makeAjaxRequest(url, data, onSuccess, onError) {
@@ -123,7 +122,7 @@
             [column]: value
         };
 
-        const url = routes.updateTable.replace(':id', id); 
+        const url = routes.updateTable.replace(':id', id);
 
         makeAjaxRequest(url, data, handleUpdateSuccess, handleUpdateError);
     }

@@ -36,26 +36,28 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
 
-        Schema::create('customers', function (Blueprint $table) {
-            $table->id()->comment('Müşteri ID');
-            $table->string('name')->comment('Müşteri Adı');
-            $table->string('email')->unique()->comment('Müşteri E-posta');
-            $table->string('phone')->nullable()->comment('Müşteri Telefonu');
-            $table->string('address')->nullable()->comment('Müşteri Adresi');
-            $table->timestamps();
-            $table->softDeletes()->comment('Yumuşak Silme');
-        });
+     
 
         // Rezervasyonlar
         Schema::create('reservations', function (Blueprint $table) {
             $table->id()->comment('Rezervasyon ID');
-            $table->unsignedBigInteger('customer_id')->comment('Müşteri ID');
+            $table->text('customer_name')->comment('Müşteri Adı');
             $table->dateTime('reservation_date')->comment('Rezervasyon Tarihi');
             $table->enum('status', ['pending', 'confirmed', 'cancelled'])->default('pending')->comment('Rezervasyon Durumu');
             $table->text('notes')->nullable()->comment('Notlar');
+            $table->unsignedBigInteger('table_id')->comment('Masa ID');
             $table->timestamps();
             $table->softDeletes()->comment('Yumuşak Silme');
         });
+
+
+        Schema::create('tables', function (Blueprint $table) {
+            $table->id()->comment('Masa ID');
+            $table->string('name')->comment('Masa Adı');
+            $table->integer('capacity')->comment('Kapasite');
+            $table->text('status')->default('0')->comment('Masa Durumu');
+        });
+
 
         // Bildirimler
         Schema::create('notifications', function (Blueprint $table) {
@@ -155,13 +157,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('tables', function (Blueprint $table) {
-            $table->id()->comment('Masa ID');
-            $table->string('name')->comment('Masa Adı');
-            $table->integer('capacity')->comment('Kapasite');
-            $table->timestamps();
-        });
-
+      
         // Stok Yönetimi
         Schema::create('inventory', function (Blueprint $table) {
             $table->id()->comment('Envanter ID');
