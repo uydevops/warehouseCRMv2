@@ -17,4 +17,10 @@ class DashboardController extends Controller
         $this->data['users'] = DB::table('users')->get();
         return view('users', $this->data);
     }
+
+    public function tables()
+    {
+        $this->data['tables'] = DB::table('tables')->get();
+        return view('tables', $this->data);
+    }
 }

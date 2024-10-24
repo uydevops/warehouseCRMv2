@@ -14,6 +14,7 @@
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body data-topbar="dark">
@@ -93,22 +94,14 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="mdi mdi-bell-ring"></i>
-                                Bildirim Ayarları
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="mdi mdi-table"></i>
+                                <span>Rezervasyon Sistemi</span>
                             </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="mdi mdi-account-multiple"></i>
-                                Personel Ayarları
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="mdi mdi-account-group"></i>
-                                Departman Ayarları
-                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{route('tables')}}">Masa Listesi</a></li>
+                                <li><a href="#">Rezervasyon Listesi</a></li>
+                            </ul>
                         </li>
                         
 

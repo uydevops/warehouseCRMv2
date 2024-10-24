@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\TablesController;
 use App\Http\Middleware\AuthMiddleware;
 
 Route::middleware('guest')->group(function () {
@@ -21,6 +22,13 @@ Route::group(['middleware' => AuthMiddleware::class], function () {
     Route::post('/users/update', [UsersController::class, 'updateUser'])->name('users.update');
     Route::get('/users/delete/{id}', [UsersController::class, 'deleteUser'])->name('users.delete');
     Route::post('/users/add', [UsersController::class, 'addUser'])->name('users.add');
+
+
+    Route::get('/masalar', [DashboardController::class, 'tables'])->name('tables');
+    Route::post('/masalar/add', [TablesController::class, 'add'])->name('tables.add');
+    Route::get('/masalar/delete/{id}', [TablesController::class, 'delete'])->name('tables.delete');
+    Route::post('/tables/{id}', [TablesController::class, 'update'])->name('tables.update');
+
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
