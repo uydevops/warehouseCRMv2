@@ -92,15 +92,29 @@ return new class extends Migration
             $table->timestamps();
         });
 
+
+        //referance orders
+        Schema::create('referance_order', function (Blueprint $table) {
+            $table->id()->comment('Sipariş ID');
+            $table->text('invoice_id')->comment('Fatura ID');
+        });
+        
+
         // Faturalar
         Schema::create('invoices', function (Blueprint $table) {
             $table->id()->comment('Fatura ID');
             $table->unsignedBigInteger('customer_id')->comment('Müşteri ID');
             $table->decimal('amount', 10, 2)->comment('Tutar');
+            $table->decimal('vat_rate', 5, 2)->default(18)->comment('KDV Oranı'); // KDV Oranı
+            $table->decimal('vat_amount', 10, 2)->nullable()->comment('KDV Tutarı'); // KDV Tutarı
             $table->enum('status', ['pending', 'paid', 'cancelled'])->default('pending')->comment('Fatura Durumu');
             $table->dateTime('due_date')->nullable()->comment('Son Ödeme Tarihi');
+            $table->unsignedBigInteger('order_id')->nullable()->comment('Sipariş ID'); // Bağlı Sipariş
+            $table->string('payment_method')->nullable()->comment('Ödeme Yöntemi'); // Kredi kartı, nakit, vb.
+            $table->text('notes')->nullable()->comment('Notlar');
             $table->timestamps();
         });
+        
 
         // Finansal Kayıtlar (Gelir ve gider için)
         Schema::create('financial_records', function (Blueprint $table) {
@@ -115,9 +129,10 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id()->comment('Çalışan ID');
             $table->string('name')->comment('Çalışan Adı');
+            $table->text('position')->comment('Pozisyon');
             $table->decimal('salary', 10, 2)->comment('Maaş');
             $table->integer('leave_days')->default(0)->comment('Kullanılan İzin Günleri'); // Kullanılan izin günleri
-            $table->integer('annual_leave_days')->default(0)->comment('Yıllık İzin Günleri'); // Yıllık izin günleri
+            $table->text('annual_leave_days')->default(0)->comment('Yıllık İzin Günleri'); // Yıllık izin günleri
             $table->timestamps();
         });
 

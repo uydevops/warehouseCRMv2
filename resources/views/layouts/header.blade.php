@@ -79,53 +79,54 @@
                 <div id="sidebar-menu">
                     <!-- Left Menu Start -->
                     <ul class="metismenu list-unstyled" id="side-menu">
-                        <li class="menu-title">Main</li>
-
+                        <li class="menu-title">Ana Menü</li>
                         <li>
                             <a href="{{ route('dashboard') }}" class="waves-effect">
-                                <i class="mdi mdi-speedometer"></i>
+                                <i class="mdi mdi-chart-areaspline"></i>
                                 <span>Analiz</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('users') }}">
-                                <i class="mdi mdi-account-settings"></i>
-                                Kullanıcı Ayarları
+                                <i class="mdi mdi-account-cog"></i>
+                                <span>Kullanıcı Ayarları</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('tables')}}" class="waves-effect">
-                                <i class="mdi mdi-table"></i> <!-- Masa Listesi ikonu -->
+                            <a href="{{ route('tables') }}" class="waves-effect">
+                                <i class="mdi mdi-table-large"></i>
                                 <span>Masa Listesi</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('reservations')}}" class="waves-effect">
-                                <i class="mdi mdi-book-multiple"></i> <!-- Rezervasyon Listesi ikonu -->
+                            <a href="{{ route('reservations') }}" class="waves-effect">
+                                <i class="mdi mdi-book-outline"></i>
                                 <span>Rezervasyon Listesi</span>
                             </a>
                         </li>
-
                         <!---Geri Bildirimler--->
                         <li>
-                            <a href="{{route('feedbacks')}}" class="waves-effect">
-                                <i class="mdi mdi-comment"></i> <!-- Geri Bildirim ikonu -->
+                            <a href="{{ route('feedbacks') }}" class="waves-effect">
+                                <i class="mdi mdi-comment-multiple"></i>
                                 <span>Geri Bildirimler</span>
                             </a>
                         </li>
-
-                        <!---personel listesi--->
+                        <!---Personel Listesi--->
                         <li>
-                            <a href="{{route('employees')}}" class="waves-effect">
-                                <i class="mdi mdi-account-multiple"></i> <!-- Personel Listesi ikonu -->
+                            <a href="{{ route('employees') }}" class="waves-effect">
+                                <i class="mdi mdi-account-group"></i>
                                 <span>Personel Listesi</span>
                             </a>
                         </li>
-                        
-                        
-
-                    
+                        <!---Fatura Listesi--->
+                        <li>
+                            <a href="{{ route('invoices') }}" class="waves-effect">
+                                <i class="mdi mdi-receipt"></i>
+                                <span>Fatura Listesi</span>
+                            </a>
+                        </li>
                     </ul>
+                    
                 </div>
                 <!-- Sidebar -->
             </div>

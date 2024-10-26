@@ -6,6 +6,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TablesController;
 use App\Http\Controllers\ReservationsController;
+use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\InvoicesController;
 use App\Http\Middleware\AuthMiddleware;
 
 Route::middleware('guest')->group(function () {
@@ -44,6 +46,17 @@ Route::group(['middleware' => AuthMiddleware::class], function () {
 
 
     Route::get('/employees', [DashboardController::class, 'employees'])->name('employees');
+    Route::post('/employees/add', [EmployeesController::class, 'add'])->name('employees.add');
+    Route::post('/employees/update', [EmployeesController::class, 'update'])->name('employees.update');
+    Route::get('/employees/delete/{id}', [EmployeesController::class, 'delete'])->name('employees.delete');
+
+
+    ///invoices
+    Route::get('/invoices', [DashboardController::class, 'invoices'])->name('invoices');
+    Route::post('/invoices/add', [InvoicesController::class, 'add'])->name('invoices.add');
+    Route::post('/invoices/update', [InvoicesController::class, 'update'])->name('invoices.update');
+    Route::get('/invoices/delete/{id}', [InvoicesController::class, 'delete'])->name('invoices.delete');
+
     
 
 
